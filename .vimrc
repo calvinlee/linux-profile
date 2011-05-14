@@ -50,7 +50,7 @@ set mouse=a		" Enable mouse usage (all modes)
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
+    source /etc/vim/vimrc.local
 endif
 
 set nu
@@ -62,9 +62,9 @@ set background=dark " we plan to use a dark background
 syntax on " syntax highlighting on
 
 " Search {
-    set hlsearch    " highlight search result.
-    set incsearch   " do search as you type your search phrase
-    set ignorecase smartcase    " smart ignore case when searching.
+set hlsearch    " highlight search result.
+set incsearch   " do search as you type your search phrase
+set ignorecase smartcase    " smart ignore case when searching.
 " }
 
 let Tlist_Show_One_File=1
@@ -99,36 +99,33 @@ filetype plugin indent on
 let g:winManagerWindowLayout='NERDTree|TagList,BufExplorer'
 
 " Mappings {
-    " ROT13 - fun
-    "map <Tab> <C-w> h
+" ROT13 - fun
+"map <Tab> <C-w> h
 " auto indent, no tab, 4 shift
- "    map <F2> :%!indent -nut -orig -ts4 -nfca <CR><CR> l
+"    map <F2> :%!indent -nut -orig -ts4 -nfca <CR><CR> l
 "    map gg :%!grep 
-    map q :q <CR>
-    map Q :qa <CR>
+map q :q <CR>
+map Q :qa <CR>
 "    map t :tabnew 
 "    map t :TlistToggle <CR>
-    map W :w <CR>
+map W :w <CR>
 "    map <C-h> :tabprevious <CR>
 "    map <C-l> :tabnext <CR>
- "    map <C-h> :bp <CR>
-   "  map <C-l> :bn <CR>
+"    map <C-h> :bp <CR>
+"  map <C-l> :bn <CR>
 "    noremap <C-V> :r! xclip -o <CR>
-   "  map <C-j> <C-]>
-    " map <C-k> <C-t>
-  "   inoremap <C-d> <ESC>:r!date<CR>iKyan He <kyan.ql.he@gmail.com> @ <ESC>kJA<CR>
+"  map <C-j> <C-]>
+" map <C-k> <C-t>
+" space / shift-space scroll in normal mode
+"    noremap <S-space> <C-b>
+"  noremap <space> <C-f>
 
-
-    " space / shift-space scroll in normal mode
- "    noremap <S-space> <C-b>
-   "  noremap <space> <C-f>
-
-    " Make Arrow Keys Useful Again {
-    "    map <down> <ESC>:bn<RETURN>
-    "    map <left> <ESC>:NERDTreeToggle<RETURN>
-    "    map <right> <ESC>:Tlist<RETURN>
-    "    map <up> <ESC>:bp<RETURN>
-    " }
+" Make Arrow Keys Useful Again {
+"    map <down> <ESC>:bn<RETURN>
+"    map <left> <ESC>:NERDTreeToggle<RETURN>
+"    map <right> <ESC>:Tlist<RETURN>
+"    map <up> <ESC>:bp<RETURN>
+" }
 " }
 "
 let g:debuggerMaxDepth = 5
@@ -142,34 +139,34 @@ autocmd! bufwritepost _vimrc source %
 " 记住上次离开的的位置
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
-"hignlight current line
-:set cursorline
-:set clipboard=unnamed
-:set go+=a
+    "hignlight current line
+    :set cursorline
+    :set clipboard=unnamed
+    :set go+=a
 
-:set iskeyword=@,48-57,_,-,(,),[,],<,>,$
+    :set iskeyword=@,48-57,_,-,(,),[,],<,>,$
 
-"自动载入 _vimrc，修改后不需要重启
-autocmd! bufwritepost _vimrc source %
+    "自动载入 _vimrc，修改后不需要重启
+    autocmd! bufwritepost _vimrc source %
 
-"自动补全成对的括号和引号
-"@http://blog.hotoo.me/vim-autocomplete-pairs.html
-inoremap <C-d> <ESC>:r!date<CR>iKyan He <kyan.ql.he@gmail.com> @ <ESC>kJA<CR>
-inoremap ( ()<ESC>i
-inoremap ) <c-r>=ClosePair(')')<CR>
-inoremap { {}<ESC>i
-inoremap } <c-r>=ClosePair('}')<CR>
-inoremap [ []<ESC>i
-inoremap ] <c-r>=ClosePair(']')<CR>
-inoremap < <><ESC>i
-inoremap > <c-r>=ClosePair('>')<CR>
+    "自动补全成对的括号和引号
+    "@http://blog.hotoo.me/vim-autocomplete-pairs.html
+    inoremap <C-d> <ESC>:r!date<CR>iKyan He <kyan.ql.he@gmail.com> @ <ESC>kJA<CR>
+    inoremap ( ()<ESC>i
+    inoremap ) <c-r>=ClosePair(')')<CR>
+    inoremap { {}<ESC>i
+    inoremap } <c-r>=ClosePair('}')<CR>
+    inoremap [ []<ESC>i
+    inoremap ] <c-r>=ClosePair(']')<CR>
+    inoremap < <><ESC>i
+    inoremap > <c-r>=ClosePair('>')<CR>
 
-function ClosePair(char)
-    if getline('.')[col('.') - 1] == a:char
-        return "\<Right>"
-    else
-        return a:char
-    endif
-endf
+    function ClosePair(char)
+        if getline('.')[col('.') - 1] == a:char
+            return "\<Right>"
+        else
+            return a:char
+        endif
+    endf
 
-":set mouse=v
+    ":set mouse=v
