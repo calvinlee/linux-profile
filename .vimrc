@@ -77,8 +77,8 @@ set shiftwidth=4 " 自动缩进的宽度。
 "pydiction 1.2 python auto complete
 filetype plugin on
 let g:pydiction_location = '~/.vim/tools/pydiction/complete-dict'
-"defalut g:pydiction_menu_height == 15
-"let g:pydiction_menu_height = 20 
+let g:pydiction_menu_height = 15
+let g:pydiction_menu_height = 20 
 
 "ColorScheme
 "see http://www.vi-improved.org/color_sampler_pack/
@@ -98,36 +98,10 @@ filetype plugin indent on
 
 let g:winManagerWindowLayout='NERDTree|TagList,BufExplorer'
 
-" Mappings {
-" ROT13 - fun
-"map <Tab> <C-w> h
-" auto indent, no tab, 4 shift
-"    map <F2> :%!indent -nut -orig -ts4 -nfca <CR><CR> l
-"    map gg :%!grep 
 map q :q <CR>
 map Q :qa <CR>
-"    map t :tabnew 
-"    map t :TlistToggle <CR>
 map W :w <CR>
-"    map <C-h> :tabprevious <CR>
-"    map <C-l> :tabnext <CR>
-"    map <C-h> :bp <CR>
-"  map <C-l> :bn <CR>
-"    noremap <C-V> :r! xclip -o <CR>
-"  map <C-j> <C-]>
-" map <C-k> <C-t>
-" space / shift-space scroll in normal mode
-"    noremap <S-space> <C-b>
-"  noremap <space> <C-f>
 
-" Make Arrow Keys Useful Again {
-"    map <down> <ESC>:bn<RETURN>
-"    map <left> <ESC>:NERDTreeToggle<RETURN>
-"    map <right> <ESC>:Tlist<RETURN>
-"    map <up> <ESC>:bp<RETURN>
-" }
-" }
-"
 let g:debuggerMaxDepth = 5
 
 " autoload _vimrc 
@@ -139,34 +113,45 @@ autocmd! bufwritepost _vimrc source %
 " 记住上次离开的的位置
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
-    "hignlight current line
-    :set cursorline
-    :set clipboard=unnamed
-    :set go+=a
+"hignlight current line
+:set cursorline
 
-    :set iskeyword=@,48-57,_,-,(,),[,],<,>,$
+:set clipboard=unnamed
 
-    "自动载入 _vimrc，修改后不需要重启
-    autocmd! bufwritepost _vimrc source %
+:set go+=a
 
-    "自动补全成对的括号和引号
-    "@http://blog.hotoo.me/vim-autocomplete-pairs.html
-    inoremap <C-d> <ESC>:r!date<CR>iKyan He <kyan.ql.he@gmail.com> @ <ESC>kJA<CR>
-    inoremap ( ()<ESC>i
-    inoremap ) <c-r>=ClosePair(')')<CR>
-    inoremap { {}<ESC>i
-    inoremap } <c-r>=ClosePair('}')<CR>
-    inoremap [ []<ESC>i
-    inoremap ] <c-r>=ClosePair(']')<CR>
-    inoremap < <><ESC>i
-    inoremap > <c-r>=ClosePair('>')<CR>
+:set iskeyword=@,48-57,_,-,(,),[,],<,>,$
 
-    function ClosePair(char)
-        if getline('.')[col('.') - 1] == a:char
-            return "\<Right>"
-        else
-            return a:char
-        endif
-    endf
+"自动载入 _vimrc，修改后不需要重启
+autocmd! bufwritepost _vimrc source %
 
-    ":set mouse=v
+"自动补全成对的括号和引号
+"@http://blog.hotoo.me/vim-autocomplete-pairs.html
+inoremap ( ()<ESC>i
+inoremap ) <c-r>=ClosePair(')')<CR>
+inoremap { {}<ESC>i
+inoremap } <c-r>=ClosePair('}')<CR>
+inoremap [ []<ESC>i
+inoremap ] <c-r>=ClosePair(']')<CR>
+inoremap < <><ESC>i
+inoremap > <c-r>=ClosePair('>')<CR>
+
+function ClosePair(char)
+    if getline('.')[col('.') - 1] == a:char
+        return "\<Right>"
+    else
+        return a:char
+    endif
+endf
+
+":set mouse=v
+"
+" no swap file please
+:set noswapfile
+
+map <S-Enter> o<Esc>
+map <C-S-Enter> O<Esc>
+inoremap <S-Enter> <ESC>$o
+inoremap <C-S-Enter> <ESC>$O
+
+inoremap <C-a> <ESC>:r!date<CR>iCalvin.Lee<lihao921@gmail.com> @ <ESC>kJA<CR>

@@ -1,4 +1,3 @@
-
 set hintchars=hjklasdf
 set tabnumbers
 noremap h gT
@@ -11,9 +10,26 @@ noremap d D
 noremap D d
 map J <C-d><CR>
 map K <C-u><CR>
+noremap H h
+noremap L l
+noremap , <C-o>
+noremap . <C-i>
+noremap g gg
 
 set nextpattern=\s*下一页|下一张|下页\s*,\bnext\b,^>$,^(>>|››|»)$,^(>|»),(>|»)$,\bmore\b
 set previouspattern=\s*上一页|上一张|上页\s*,\bprev|previous\b,^<$,^(<<|‹‹|«)$,^(<|«),(<|«)$
 
-"pass through gmail and google reader
+" PassThrough gmail and google reader
 autocmd LocationChange .* js modes.passAllKeys = /.*(mail\.google\.com|www\.google\.com\/reader).*/.test(buffer.URL)
+
+noremap gm :tabopen https://mail.google.com<CR>
+noremap gr :tabopen https://www.google.com/reader<CR>
+noremap gn :tabopen https://www.google.com/notebook<CR>
+noremap gd :tabopen http://us.dict.cn/<CR>
+noremap gb :tabopen http://www.blogjava.net/lihao336/<CR>
+
+noremap gM :open https://mail.google.com<CR>
+noremap gR :open https://www.google.com/reader<CR>
+noremap gN :open https://www.google.com/notebook<CR>
+noremap gD :open http://us.dict.cn/<CR>
+noremap gB :open http://www.blogjava.net/lihao336/<CR>

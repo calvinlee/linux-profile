@@ -1,6 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/home/calvin/work/clat/ftp-newest'
 let g:netrw_dirhist_2='/home/calvin/work/clat/ftp-newest/client'
 let g:netrw_dirhist_3='/home/calvin/work/clat/ftp-newest/client/monkey'
 let g:netrw_dirhist_4='/home/calvin/.vimperator'
+let g:netrw_dirhist_5='/home/calvin/work/gerrit-repo/Tools'
