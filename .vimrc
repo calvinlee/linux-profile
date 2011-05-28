@@ -80,11 +80,6 @@ let g:pydiction_location = '~/.vim/tools/pydiction/complete-dict'
 let g:pydiction_menu_height = 15
 let g:pydiction_menu_height = 20 
 
-"ColorScheme
-"see http://www.vi-improved.org/color_sampler_pack/
-set t_Co=256
-"colorscheme winter 
-
 set showmode
 set helplang=cn
 
@@ -98,14 +93,34 @@ filetype plugin indent on
 
 let g:winManagerWindowLayout='NERDTree|TagList,BufExplorer'
 
+" Key mappings {
 map q :q <CR>
 map Q :qa <CR>
 map W :w <CR>
+map <S-Enter> o<Esc>
+map <C-S-Enter> O<Esc>
+inoremap <S-Enter> <ESC>$o
+inoremap <C-S-Enter> <ESC>$O
+
+inoremap <C-a> <ESC>:r!date<CR>iCalvin.Lee<lihao921@gmail.com> @ <ESC>kJA<CR>
+
+"自动补全成对的括号和引号
+"@http://blog.hotoo.me/vim-autocomplete-pairs.html
+inoremap ( ()<ESC>i
+inoremap ) <c-r>=ClosePair(')')<CR>
+inoremap { {}<ESC>i
+inoremap } <c-r>=ClosePair('}')<CR>
+inoremap [ []<ESC>i
+inoremap ] <c-r>=ClosePair(']')<CR>
+inoremap < <><ESC>i
+inoremap > <c-r>=ClosePair('>')<CR>
+
+" format all of text
+map <C-S-f> gg=G<C-o><C-o>
+
+" }
 
 let g:debuggerMaxDepth = 5
-
-" autoload _vimrc 
-autocmd! bufwritepost _vimrc source % 
 
 " 允许backspace和光标键跨越行边界
 :set whichwrap+=<,>,h,l
@@ -122,19 +137,8 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 
 :set iskeyword=@,48-57,_,-,(,),[,],<,>,$
 
-"自动载入 _vimrc，修改后不需要重启
-autocmd! bufwritepost _vimrc source %
-
-"自动补全成对的括号和引号
-"@http://blog.hotoo.me/vim-autocomplete-pairs.html
-inoremap ( ()<ESC>i
-inoremap ) <c-r>=ClosePair(')')<CR>
-inoremap { {}<ESC>i
-inoremap } <c-r>=ClosePair('}')<CR>
-inoremap [ []<ESC>i
-inoremap ] <c-r>=ClosePair(']')<CR>
-inoremap < <><ESC>i
-inoremap > <c-r>=ClosePair('>')<CR>
+"自动载入 .vimrc，修改后不需要重启
+autocmd! bufwritepost .vimrc source %
 
 function ClosePair(char)
     if getline('.')[col('.') - 1] == a:char
@@ -149,9 +153,4 @@ endf
 " no swap file please
 :set noswapfile
 
-map <S-Enter> o<Esc>
-map <C-S-Enter> O<Esc>
-inoremap <S-Enter> <ESC>$o
-inoremap <C-S-Enter> <ESC>$O
-
-inoremap <C-a> <ESC>:r!date<CR>iCalvin.Lee<lihao921@gmail.com> @ <ESC>kJA<CR>
+:set cscopequickfix=s-,c-,d-,i-,t-,e-

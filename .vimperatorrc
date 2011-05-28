@@ -15,6 +15,9 @@ noremap L l
 noremap , <C-o>
 noremap . <C-i>
 noremap g gg
+noremap f F
+noremap F f
+noremap <C-,> <C-6>
 
 set nextpattern=\s*下一页|下一张|下页\s*,\bnext\b,^>$,^(>>|››|»)$,^(>|»),(>|»)$,\bmore\b
 set previouspattern=\s*上一页|上一张|上页\s*,\bprev|previous\b,^<$,^(<<|‹‹|«)$,^(<|«),(<|«)$
