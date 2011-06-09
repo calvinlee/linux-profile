@@ -1,9 +1,0 @@
-#!/bin/sh
-#
-# The script used to disable the touchpad on my HP pavilion.
-#
-# Calvin.Lee<lihao921@gmail.com> @ Mon May 23 23:25:04 CST 2011
-
-DEVICE_ID=`xinput list|grep -i TouchPad|awk '{print $6}'|cut -f2 -d'='`
-
-xinput set-prop $DEVICE_ID "Device Enabled" 0 # 0 to disabled ,1 for enabled
