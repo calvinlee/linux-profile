@@ -94,13 +94,13 @@ filetype plugin indent on
 let g:winManagerWindowLayout='NERDTree|TagList,BufExplorer'
 
 " Key mappings {
-map q :q <CR>
+map <A-q> :q <CR>
 map Q :qa <CR>
 map W :w <CR>
-map <S-Enter> o<Esc>
-map <C-S-Enter> O<Esc>
-inoremap <S-Enter> <ESC>$o
-inoremap <C-S-Enter> <ESC>$O
+map <S-CR> o<Esc>
+map <C-S-CR> O<Esc>
+inoremap <S-CR> <ESC>$o
+inoremap <C-S-CR> <ESC>$O
 
 inoremap <C-a> <ESC>:r!date<CR>iCalvin.Lee<lihao921@gmail.com> @ <ESC>kJA<CR>
 
@@ -120,6 +120,11 @@ inoremap ' ''<ESC>i
 " format all of text
 map <C-S-f> gg=G<C-o><C-o>
 
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+map f/ <esc>:grep 
 " }
 
 let g:debuggerMaxDepth = 5
@@ -130,30 +135,52 @@ let g:debuggerMaxDepth = 5
 " 记住上次离开的的位置
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
-"hignlight current line
-:set cursorline
+    "hignlight current line
+    :set cursorline
 
-:set clipboard=unnamed
+    :set clipboard=unnamed
 
-:set go+=a
+    :set go+=a
 
+    "自动载入 .vimrc，修改后不需要重启
+    autocmd! bufwritepost .vimrc source %
 
-"自动载入 .vimrc，修改后不需要重启
-autocmd! bufwritepost .vimrc source %
+    function! ClosePair(char)
+        if getline('.')[col('.') - 1] == a:char
+            return "\<Right>"
+        else
+            return a:char
+        endif
+    endf
 
-function! ClosePair(char)
-    if getline('.')[col('.') - 1] == a:char
-        return "\<Right>"
+    ":set mouse=v
+    "
+    " no swap file please
+    :set noswapfile
+
+    :set cscopequickfix=s-,c-,d-,i-,t-,e-
+
+    :set iskeyword+=-
+
+    " transfer/read and write one block of text between vim sessions
+    " Usage:
+    " `from' session:
+    " ma
+    " move to end-of-block
+    " xw
+    "
+    " `to' session:
+    " move to where I want block inserted
+    " xr
+    "
+    if has("unix")
+        nmap xr :r $HOME/.vimxfer<CR>
+        nmap xw :'a,.w! $HOME/.vimxfer<CR>
+        vmap xr c<esc>:r $HOME/.vimxfer<CR>
+        vmap xw :w! $HOME/.vimxfer<CR>
     else
-        return a:char
+        nmap xr :r c:/.vimxfer<CR>
+        nmap xw :'a,.w! c:/.vimxfer<CR>
+        vmap xr c<esc>:r c:/.vimxfer<cr>
+        vmap xw :w! c:/.vimxfer<CR>
     endif
-endf
-
-":set mouse=v
-"
-" no swap file please
-:set noswapfile
-
-:set cscopequickfix=s-,c-,d-,i-,t-,e-
-
-:set iskeyword+=-
