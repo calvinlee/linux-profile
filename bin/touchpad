@@ -28,5 +28,5 @@ case $STATUS in
     ;;
 esac
 
-notify-send -i /usr/share/pixmaps/gnome-irc.png "Touchpad" "Synaptics TouchPad Disabled" -t 3000
+notify-send -i /usr/share/pixmaps/gnome-irc.png "Touchpad" "$MSG" -t 3000
 exit $RET
