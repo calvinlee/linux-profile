@@ -36,3 +36,5 @@ noremap gR :open https://www.google.com/reader<CR>
 noremap gN :open https://www.google.com/notebook<CR>
 noremap gD :open http://us.dict.cn/<CR>
 noremap gB :open http://www.blogjava.net/lihao336/<CR>
+
+inoremap <C-m> lihao921@gmail.com
