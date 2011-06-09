@@ -97,10 +97,10 @@ let g:winManagerWindowLayout='NERDTree|TagList,BufExplorer'
 map q :q <CR>
 map Q :qa <CR>
 map W :w <CR>
-map <S-Enter> o<Esc>
-map <C-S-Enter> O<Esc>
-inoremap <S-Enter> <ESC>$o
-inoremap <C-S-Enter> <ESC>$O
+map <S-CR> o<Esc>
+map <C-S-CR> O<Esc>
+inoremap <S-CR> <ESC>$o
+inoremap <C-S-CR> <ESC>$O
 
 inoremap <C-a> <ESC>:r!date<CR>iCalvin.Lee<lihao921@gmail.com> @ <ESC>kJA<CR>
 
@@ -118,6 +118,11 @@ inoremap > <c-r>=ClosePair('>')<CR>
 " format all of text
 map <C-S-f> gg=G<C-o><C-o>
 
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+map f/ <esc>:grep 
 " }
 
 let g:debuggerMaxDepth = 5
@@ -135,7 +140,7 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 
 :set go+=a
 
-:set iskeyword=@,48-57,_,-,(,),[,],<,>,$
+:set iskeyword+=@,48-57,_,-,(,),[,],<,>,$
 
 "自动载入 .vimrc，修改后不需要重启
 autocmd! bufwritepost .vimrc source %
@@ -154,3 +159,4 @@ endf
 :set noswapfile
 
 :set cscopequickfix=s-,c-,d-,i-,t-,e-
+
