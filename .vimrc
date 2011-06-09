@@ -114,7 +114,9 @@ inoremap [ []<ESC>i
 inoremap ] <c-r>=ClosePair(']')<CR>
 inoremap < <><ESC>i
 inoremap > <c-r>=ClosePair('>')<CR>
-
+inoremap " ""<ESC>i
+inoremap ' ''<ESC>i
+""
 " format all of text
 map <C-S-f> gg=G<C-o><C-o>
 
@@ -140,12 +142,10 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 
 :set go+=a
 
-:set iskeyword+=@,48-57,_,-,(,),[,],<,>,$
-
 "自动载入 .vimrc，修改后不需要重启
 autocmd! bufwritepost .vimrc source %
 
-function ClosePair(char)
+function! ClosePair(char)
     if getline('.')[col('.') - 1] == a:char
         return "\<Right>"
     else
@@ -160,3 +160,4 @@ endf
 
 :set cscopequickfix=s-,c-,d-,i-,t-,e-
 
+:set iskeyword+=-
