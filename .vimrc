@@ -125,6 +125,8 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 map f/ <esc>:grep 
+
+map <S-Insert> <MiddleMouse> 
 " }
 
 let g:debuggerMaxDepth = 5
