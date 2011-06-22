@@ -121,13 +121,15 @@ inoremap ' ''<ESC>i
 ""
 " format all of text
 nnoremap <s-f> gg=G<C-o><C-o>
-inoremap <s-f> gg=G<C-o><C-o>
 
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 map f/ <esc>:grep 
+
+" open bufexplorer
+map <C-b> \be
 
 map <S-Insert> <MiddleMouse> 
 " }
