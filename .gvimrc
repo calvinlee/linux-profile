@@ -1,4 +1,5 @@
-colorscheme winter 
+"colorscheme winter 
+colorscheme default
 set guioptions-=m
 set guioptions-=T
 

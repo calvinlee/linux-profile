@@ -59,10 +59,8 @@ deb http://ubuntu.cn99.com/ubuntu/ lucid-proposed main multiverse restricted uni
 deb http://ubuntu.cn99.com/ubuntu/ lucid-security main multiverse restricted universe
 deb http://ubuntu.cn99.com/ubuntu/ lucid-updates main multiverse restricted universe
 
-deb http://deb.torproject.org/torproject.org lucid main
-deb-src http://deb.torproject.org/torproject.org lucid main
 
 # Tomboy notes PPA
 # https://launchpad.net/~tomboy-packagers/+archive/stable
-deb http://ppa.launchpad.net/tomboy-packagers/stable/ubuntu lucid main 
-deb-src http://ppa.launchpad.net/tomboy-packagers/stable/ubuntu lucid main 
+deb http://ppa.launchpad.net/tomboy-packagers/stable/ubuntu lucid main
+deb-src http://ppa.launchpad.net/tomboy-packagers/stable/ubuntu lucid main

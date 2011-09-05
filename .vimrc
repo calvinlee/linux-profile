@@ -105,6 +105,7 @@ inoremap <S-CR> <ESC>$o
 inoremap <C-S-CR> <ESC>$O
 
 inoremap <C-a> <ESC>:r!date<CR>iCalvin.Lee<lihao921@gmail.com> @ <ESC>kJA<CR>
+inoremap <C-d> // BEGIN DELL, calvinlee@cienet.com.cn, <ESC>:r!date +\%m/\%d/\%Y<CR><ESC>kJA
 
 "自动补全成对的括号和引号
 "@http://blog.hotoo.me/vim-autocomplete-pairs.html
@@ -129,9 +130,11 @@ map <C-l> <C-W>l
 map f/ <esc>:grep 
 
 " open bufexplorer
-map <C-b> \be
+map <s-b> \be
 
 map <S-Insert> <MiddleMouse> 
+
+map <C-a> :A <CR>
 " }
 
 let g:debuggerMaxDepth = 5
@@ -192,3 +195,19 @@ else
     vmap xr c<esc>:r c:/.vimxfer<cr>
     vmap xw :w! c:/.vimxfer<CR>
 endif
+
+function! Do_CsTag()
+    if(executable('cscope') && has("cscope") )
+        if(g:iswindows!=1)
+            silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' -o -name '*.cxx' -o -name '*.hxx'> cscope.files"
+        else
+            silent! execute "!dir /b *.c,*.cpp,*.h,*.java,*.cs >> cscope.files"
+        endif
+        silent! execute "!cscope -bq"
+        if filereadable("cscope.out")
+            execute "cs add cscope.out"
+        endif
+    endif
+endf
+
+map <F<F6>> :call Do_CsTag()
