@@ -75,7 +75,9 @@ set tabstop=4 " set tab to four spaces
 set shiftwidth=4 " 自动缩进的宽度。
 
 "pydiction 1.2 python auto complete
+set nocp
 filetype plugin on
+
 let g:pydiction_location = '~/.vim/tools/pydiction/complete-dict'
 let g:pydiction_menu_height = 15
 let g:pydiction_menu_height = 20 
@@ -135,6 +137,9 @@ map <s-b> \be
 map <S-Insert> <MiddleMouse> 
 
 map <C-a> :A <CR>
+
+" generate tags file with C-F12
+map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 " }
 
 let g:debuggerMaxDepth = 5
@@ -146,68 +151,68 @@ let g:debuggerMaxDepth = 5
 " 注意：保证.viminfo目录可写
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
-"hignlight current line
-:set cursorline
+    "hignlight current line
+    :set cursorline
 
-:set clipboard=unnamed
+    :set clipboard=unnamed
 
-:set go+=a
+    :set go+=a
 
-"自动载入 .vimrc，修改后不需要重启
-autocmd! bufwritepost .vimrc source %
+    "自动载入 .vimrc，修改后不需要重启
+    autocmd! bufwritepost .vimrc source %
 
-function! ClosePair(char)
-    if getline('.')[col('.') - 1] == a:char
-        return "\<Right>"
-    else
-        return a:char
-    endif
-endf
-
-":set mouse=v
-"
-" no swap file please
-:set noswapfile
-
-:set cscopequickfix=s-,c-,d-,i-,t-,e-
-
-:set iskeyword+=-
-
-" transfer/read and write one block of text between vim sessions
-" Usage:
-" `from' session:
-" ma
-" move to end-of-block
-" xw
-"
-" `to' session:
-" move to where I want block inserted
-" xr
-"
-if has("unix")
-    nmap xr :r $HOME/.vimxfer<CR>
-    nmap xw :'a,.w! $HOME/.vimxfer<CR>
-    vmap xr c<esc>:r $HOME/.vimxfer<CR>
-    vmap xw :w! $HOME/.vimxfer<CR>
-else
-    nmap xr :r c:/.vimxfer<CR>
-    nmap xw :'a,.w! c:/.vimxfer<CR>
-    vmap xr c<esc>:r c:/.vimxfer<cr>
-    vmap xw :w! c:/.vimxfer<CR>
-endif
-
-function! Do_CsTag()
-    if(executable('cscope') && has("cscope") )
-        if(g:iswindows!=1)
-            silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' -o -name '*.cxx' -o -name '*.hxx'> cscope.files"
+    function! ClosePair(char)
+        if getline('.')[col('.') - 1] == a:char
+            return "\<Right>"
         else
-            silent! execute "!dir /b *.c,*.cpp,*.h,*.java,*.cs >> cscope.files"
+            return a:char
         endif
-        silent! execute "!cscope -bq"
-        if filereadable("cscope.out")
-            execute "cs add cscope.out"
-        endif
-    endif
-endf
+    endf
 
-map <F<F6>> :call Do_CsTag()
+    ":set mouse=v
+    "
+    " no swap file please
+    :set noswapfile
+
+    :set cscopequickfix=s-,c-,d-,i-,t-,e-
+
+    :set iskeyword+=-
+
+    " transfer/read and write one block of text between vim sessions
+    " Usage:
+    " `from' session:
+    " ma
+    " move to end-of-block
+    " xw
+    "
+    " `to' session:
+    " move to where I want block inserted
+    " xr
+    "
+    if has("unix")
+        nmap xr :r $HOME/.vimxfer<CR>
+        nmap xw :'a,.w! $HOME/.vimxfer<CR>
+        vmap xr c<esc>:r $HOME/.vimxfer<CR>
+        vmap xw :w! $HOME/.vimxfer<CR>
+    else
+        nmap xr :r c:/.vimxfer<CR>
+        nmap xw :'a,.w! c:/.vimxfer<CR>
+        vmap xr c<esc>:r c:/.vimxfer<cr>
+        vmap xw :w! c:/.vimxfer<CR>
+    endif
+
+    function! Do_CsTag()
+        if(executable('cscope') && has("cscope") )
+            if(g:iswindows!=1)
+                silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' -o -name '*.cxx' -o -name '*.hxx'> cscope.files"
+            else
+                silent! execute "!dir /b *.c,*.cpp,*.h,*.java,*.cs >> cscope.files"
+            endif
+            silent! execute "!cscope -bq"
+            if filereadable("cscope.out")
+                execute "cs add cscope.out"
+            endif
+        endif
+    endf
+
+    map <F<F6>> :call Do_CsTag()
