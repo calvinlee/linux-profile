@@ -30,11 +30,13 @@ noremap gr :tabopen https://www.google.com/reader<CR>
 noremap gn :tabopen https://www.google.com/notebook<CR>
 noremap gd :tabopen http://dict.cn/<CR>
 noremap gb :tabopen http://www.blogjava.net/lihao336/<CR>
+noremap ge :tabopen https://www.evernote.com/Home.action<CR>
 
 noremap gM :open https://mail.google.com<CR>
 noremap gR :open https://www.google.com/reader<CR>
 noremap gN :open https://www.google.com/notebook<CR>
 noremap gD :open http://dict.cn/<CR>
 noremap gB :open http://www.blogjava.net/lihao336/<CR>
+noremap gE :open https://www.evernote.com/Home.action<CR>
 
 inoremap <C-m> lihao921@gmail.com
