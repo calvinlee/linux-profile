@@ -216,3 +216,9 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
     endf
 
     map <F<F6>> :call Do_CsTag()
+
+" markdown syntax settings
+augroup mkd
+    autocmd BufNewFile,BufRead *.md set ai formatoptions=tcroqn2 comments=n:>
+    autocmd BufNewFile,BufRead *.md set wrap nonumber
+augroup END
