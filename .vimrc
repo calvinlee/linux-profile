@@ -120,6 +120,8 @@ inoremap < <><ESC>i
 inoremap > <c-r>=ClosePair('>')<CR>
 inoremap " ""<ESC>i
 inoremap ' ''<ESC>i
+"@http://oldj.net/article/vim-parenthesis/
+inoremap <BS> <ESC>:call RemovePairs()<CR>a
 ""
 " format all of text
 nnoremap <s-f> gg=G<C-o><C-o>
@@ -168,6 +170,35 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
             return a:char
         endif
     endf
+
+function! RemovePairs()
+	let l:line = getline(".")
+	let l:previous_char = l:line[col(".")-1] " 取得当前光标前一个字符
+
+	if index(["(", "[", "{"], l:previous_char) != -1
+		let l:original_pos = getpos(".")
+		execute "normal %"
+		let l:new_pos = getpos(".")
+
+		" 如果没有匹配的右括号
+		if l:original_pos == l:new_pos
+			execute "normal! a\<BS>"
+			return
+		end
+
+		let l:line2 = getline(".")
+		if len(l:line2) == col(".")
+			" 如果右括号是当前行最后一个字符
+			execute "normal! v%xa"
+		else
+			" 如果右括号不是当前行最后一个字符
+			execute "normal! v%xi"
+		end
+
+	else
+		execute "normal! a\<BS>"
+	end
+endfunction
 
     ":set mouse=v
     "
