@@ -107,7 +107,6 @@ inoremap <S-CR> <ESC>$o
 inoremap <C-S-CR> <ESC>$O
 
 inoremap <C-a> <ESC>:r!date<CR>iCalvin.Lee<lihao921@gmail.com> @ <ESC>kJA<CR>
-inoremap <C-d> // BEGIN DELL, calvinlee@cienet.com.cn, <ESC>:r!date +\%m/\%d/\%Y<CR><ESC>kJA
 
 "自动补全成对的括号和引号
 "@http://blog.hotoo.me/vim-autocomplete-pairs.html
