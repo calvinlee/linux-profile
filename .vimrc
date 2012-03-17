@@ -107,7 +107,6 @@ inoremap <S-CR> <ESC>$o
 inoremap <C-S-CR> <ESC>$O
 
 inoremap <C-a> <ESC>:r!date<CR>iCalvin.Lee<lihao921@gmail.com> @ <ESC>kJA<CR>
-inoremap <C-d> // BEGIN DELL, calvinlee@cienet.com.cn, <ESC>:r!date +\%m/\%d/\%Y<CR><ESC>kJA
 
 "自动补全成对的括号和引号
 "@http://blog.hotoo.me/vim-autocomplete-pairs.html
@@ -121,6 +120,8 @@ inoremap < <><ESC>i
 inoremap > <c-r>=ClosePair('>')<CR>
 inoremap " ""<ESC>i
 inoremap ' ''<ESC>i
+"@http://oldj.net/article/vim-parenthesis/
+inoremap <BS> <ESC>:call RemovePairs()<CR>a
 ""
 " format all of text
 nnoremap <s-f> gg=G<C-o><C-o>
@@ -153,6 +154,7 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 
     "hignlight current line
     :set cursorline
+    :set cursorcolumn
 
     :set clipboard=unnamed
 
@@ -168,6 +170,35 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
             return a:char
         endif
     endf
+
+function! RemovePairs()
+	let l:line = getline(".")
+	let l:previous_char = l:line[col(".")-1] " 取得当前光标前一个字符
+
+	if index(["(", "[", "{"], l:previous_char) != -1
+		let l:original_pos = getpos(".")
+		execute "normal %"
+		let l:new_pos = getpos(".")
+
+		" 如果没有匹配的右括号
+		if l:original_pos == l:new_pos
+			execute "normal! a\<BS>"
+			return
+		end
+
+		let l:line2 = getline(".")
+		if len(l:line2) == col(".")
+			" 如果右括号是当前行最后一个字符
+			execute "normal! v%xa"
+		else
+			" 如果右括号不是当前行最后一个字符
+			execute "normal! v%xi"
+		end
+
+	else
+		execute "normal! a\<BS>"
+	end
+endfunction
 
     ":set mouse=v
     "
@@ -236,3 +267,6 @@ set list listchars=trail:.,extends:>
 "autocmd FileAppendPre * :call TrimWhiteSpace()
 "autocmd FilterWritePre * :call TrimWhiteSpace()
 "autocmd BufWritePre * :call TrimWhiteSpace()
+
+" generating and markdown image tag
+command! -nargs=1 -complete=file Mkdimg :r!echo "[[/<args>](/<args>)](/<args>)"
