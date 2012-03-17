@@ -80,7 +80,7 @@ filetype plugin on
 
 let g:pydiction_location = '~/.vim/tools/pydiction/complete-dict'
 let g:pydiction_menu_height = 15
-let g:pydiction_menu_height = 20 
+let g:pydiction_menu_height = 20
 
 set showmode
 set helplang=cn
@@ -129,12 +129,12 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-map f/ <esc>:grep 
+map f/ <esc>:grep
 
 " open bufexplorer
 map <s-b> \be
 
-map <S-Insert> <MiddleMouse> 
+map <S-Insert> <MiddleMouse>
 
 map <C-a> :A <CR>
 
@@ -222,3 +222,17 @@ augroup mkd
     autocmd BufNewFile,BufRead *.md set ai formatoptions=tcroqn2 comments=n:>
     autocmd BufNewFile,BufRead *.md set wrap nonumber
 augroup END
+
+" Removes trailing spaces
+" @http://vim.wikia.com/wiki/Remove_unwanted_spaces#Automatically_removing_all_trailing_whitespace
+function! TrimWhiteSpace()
+  %s/\s*$//
+  ''
+:endfunction
+
+set list listchars=trail:.,extends:>
+" TODO: When I am writting markdown, I do need trailing spaces to break lines...
+"autocmd FileWritePre * :call TrimWhiteSpace()
+"autocmd FileAppendPre * :call TrimWhiteSpace()
+"autocmd FilterWritePre * :call TrimWhiteSpace()
+"autocmd BufWritePre * :call TrimWhiteSpace()
