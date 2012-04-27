@@ -1,41 +1,4 @@
-" All system-wide defaults are set in $VIMRUNTIME/debian.vim (usually just
-" /usr/share/vim/vimcurrent/debian.vim) and sourced by the call to :runtime
-" you can find below.  If you wish to change any of those settings, you should
-" do it in this file (/etc/vim/vimrc), since debian.vim will be overwritten
-" everytime an upgrade of the vim packages is performed.  It is recommended to
-" make changes after sourcing debian.vim since it alters the value of the
-" 'compatible' option.
-
-" This line should not be removed as it ensures that various options are
-" properly set to work with the Vim-related packages available in Debian.
-runtime! debian.vim
-
-" Uncomment the next line to make Vim more Vi-compatible
-" NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
-" options, so any other options should be set AFTER setting 'compatible'.
-"set compatible
-
-" Vim5 and later versions support syntax highlighting. Uncommenting the
-" following enables syntax highlighting by default.
-"if has("syntax")
-"  syntax on
-"endif
-
-" If using a dark background within the editing area and syntax highlighting
-" turn on this option as well
-"set background=dark
-
-" Uncomment the following to have Vim jump to the last position when
-" reopening a file
-"if has("autocmd")
-"  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"endif
-
-" Uncomment the following to have Vim load indentation rules and plugins
-" according to the detected filetype.
-"if has("autocmd")
-"  filetype plugin indent on
-"endif
+let mapleader=","
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
@@ -121,7 +84,7 @@ inoremap > <c-r>=ClosePair('>')<CR>
 inoremap " ""<ESC>i
 inoremap ' ''<ESC>i
 "@http://oldj.net/article/vim-parenthesis/
-inoremap <BS> <ESC>:call RemovePairs()<CR>a
+"inoremap <BS> <ESC>:call RemovePairs()<CR>a
 ""
 " format all of text
 nnoremap <s-f> gg=G<C-o><C-o>
@@ -154,7 +117,7 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 
     "hignlight current line
     :set cursorline
-    :set cursorcolumn
+    ":set cursorcolumn
 
     :set clipboard=unnamed
 
@@ -253,6 +216,8 @@ augroup mkd
     autocmd BufNewFile,BufRead *.md set ai formatoptions=tcroqn2 comments=n:>
     autocmd BufNewFile,BufRead *.md set wrap nonumber
 augroup END
+" set column cursor on when editing markdown files
+au FileType mkd set cursorcolumn
 
 " Removes trailing spaces
 " @http://vim.wikia.com/wiki/Remove_unwanted_spaces#Automatically_removing_all_trailing_whitespace
@@ -261,7 +226,7 @@ function! TrimWhiteSpace()
   ''
 :endfunction
 
-set list listchars=trail:.,extends:>
+" set list listchars=trail:.,extends:>
 " TODO: When I am writting markdown, I do need trailing spaces to break lines...
 "autocmd FileWritePre * :call TrimWhiteSpace()
 "autocmd FileAppendPre * :call TrimWhiteSpace()
@@ -270,3 +235,61 @@ set list listchars=trail:.,extends:>
 
 " generating and markdown image tag
 command! -nargs=1 -complete=file Mkdimg :r!echo "[[/<args>](/<args>)](/<args>)"
+
+" http://naseer.in/use-cscope-to-browse-the-android-source-code
+set nocsverb  
+ if filereadable("cscope.out")   
+ else   
+     if $ANDROID_BUILD_TOP !=""  
+         "This assumes you have sourced the Android build environment  
+         cscope add $ANDROID_BUILD_TOP/cscope.out      
+  else  
+         "Or, you can point to your android source directory in $ANDROID_DIR   
+         cscope add $ANDROID_DIR/cscope.out  
+     endif   
+ endif  
+
+" shortcut for quickfix window
+nmap <leader>cn :cn<cr>
+nmap <leader>cp :cp<cr>
+nmap <leader>cw :cw 10<cr> 
+
+
+""""""""""""""""""""""""""""""
+" lookupfile setting
+" http://easwy.com/blog/archives/advanced-vim-skills-lookupfile-plugin/
+""""""""""""""""""""""""""""""
+let g:LookupFile_MinPatLength = 2               "最少输入2个字符才开始查找
+let g:LookupFile_PreserveLastPattern = 0        "不保存上次查找的字符串
+let g:LookupFile_PreservePatternHistory = 1     "保存查找历史
+let g:LookupFile_AlwaysAcceptFirst = 1          "回车打开第一个匹配项目
+let g:LookupFile_AllowNewFiles = 0              "不允许创建不存在的文件
+if filereadable("./filenametags")               "设置tag文件的名字
+let g:LookupFile_TagExpr = '"./filenametags"'
+endif
+"映射LookupFile为lf
+"nmap <silent> lf :LUTags<cr>
+"映射LUBufs为,ll
+nmap <silent> <leader>ll :LUBufs<cr>
+"映射LUWalk为,lw
+nmap <silent> <leader>lw :LUWalk<cr>
+
+" lookup file with ignore case
+function! LookupFile_IgnoreCaseFunc(pattern)
+    let _tags = &tags
+    try
+        let &tags = eval(g:LookupFile_TagExpr)
+        let newpattern = '\c' . a:pattern
+        let tags = taglist(newpattern)
+    catch
+        echohl ErrorMsg | echo "Exception: " . v:exception | echohl NONE
+        return ""
+    finally
+        let &tags = _tags
+    endtry
+
+    " Show the matches for what is typed so far.
+    let files = map(tags, 'v:val["filename"]')
+    return files
+endfunction
+let g:LookupFile_LookupFunc = 'LookupFile_IgnoreCaseFunc' 
