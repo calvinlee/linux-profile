@@ -1,41 +1,55 @@
 let mapleader=","
 
-" The following are commented out as they cause vim to behave a lot
-" differently from regular Vi. They are highly recommended though.
-set showcmd		" Show (partial) command in status line.
-set showmatch		" Show matching brackets.
-set ignorecase		" Do case insensitive matching
-set smartcase		" Do smart case matching
-set incsearch		" Incremental search
-set autowrite		" Automatically save before commands like :next and :make
-set hidden             " Hide buffers when they are abandoned
-set mouse=a		" Enable mouse usage (all modes)
+if has("gui_running")
+"colorscheme asu1dark
+"colorscheme molokai
+colorscheme default
+else
+colorscheme desert
+"colorscheme elflord
+"colorscheme tango
+endif 
 
-" Source a global configuration file if available
-if filereadable("/etc/vim/vimrc.local")
-    source /etc/vim/vimrc.local
-endif
+set showcmd              " Show (partial) command in status line.
+set showmatch            " Show matching brackets.
+set autowrite            " Automatically save before commands like :next and :make
+set hidden               " Hide buffers when they are abandoned
+set mouse=a              " Enable mouse usage (all modes)
 
 set nu
-"set clipboard+=unnamed   " share window clipboard
+set clipboard+=unnamed " share window clipboard
 
-set nocompatible " explicitly get out of vi-compatible mode
-set noexrc " don't use local version of .(g)vimrc, .exrc
-set background=dark " we plan to use a dark background
-syntax on " syntax highlighting on
+set nocompatible         " explicitly get out of vi-compatible mode
+set noexrc               " don't use local version of .(g)vimrc, .exrc
+set background=dark      " we plan to use a dark background
+syntax on                " syntax highlighting on
 
 " Search {
-set hlsearch    " highlight search result.
-set incsearch   " do search as you type your search phrase
-set ignorecase smartcase    " smart ignore case when searching.
+set hlsearch             " highlight search result.
+set incsearch            " do search as you type your search phrase
+set ignorecase smartcase " smart ignore case when searching.
 " }
 
-let Tlist_Show_One_File=1
-let Tlist_Exit_OnlyWindow=1
+set expandtab           " user space instead of tab
+set tabstop=4           " set tab to four spaces
+set shiftwidth=4        " 自动缩进的宽度。
 
-set expandtab " user space instead of tab
-set tabstop=4 " set tab to four spaces
-set shiftwidth=4 " 自动缩进的宽度。
+" 允许backspace和光标键跨越行边界
+set whichwrap+=<,>,h,l
+
+"hignlight current line
+set cursorline
+"set cursorcolumn
+set go+=a
+
+set showmode
+set helplang=cn
+
+set cscopequickfix=s-,c-,d-,i-,t-,e- "set cscope
+set noswapfile
+set iskeyword+=-
+
+filetype plugin indent on
 
 "pydiction 1.2 python auto complete
 set nocp
@@ -45,18 +59,12 @@ let g:pydiction_location = '~/.vim/tools/pydiction/complete-dict'
 let g:pydiction_menu_height = 15
 let g:pydiction_menu_height = 20
 
-set showmode
-set helplang=cn
-
-let g:winManagerWindowLayout='FileExplorer|TagList'
+"let g:winManagerWindowLayout='FileExplorer|TagList'
+let g:winManagerWindowLayout='NERDTree|TagList'
 nmap wm :WMToggle<cr>
 let g:winManagerWidth = 40
-
-:set cscopequickfix=s-,c-,d-,i-,t-,e- "set cscope
-
-filetype plugin indent on
-
-let g:winManagerWindowLayout='NERDTree|TagList,BufExplorer'
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1
 
 " Key mappings {
 "
@@ -87,7 +95,7 @@ inoremap ' ''<ESC>i
 "inoremap <BS> <ESC>:call RemovePairs()<CR>a
 ""
 " format all of text
-nnoremap <s-f> gg=G<C-o><C-o>
+nnoremap <leader>f gg=G<C-o><C-o>
 
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -96,11 +104,12 @@ map <C-l> <C-W>l
 map f/ <esc>:grep
 
 " open bufexplorer
-map <s-b> \be
+map <leader>b :BufExplorer<cr>
+let g:bufExplorerFindActive=1 
+" switch between source and header files
+map <C-a> :A <CR>
 
 map <S-Insert> <MiddleMouse>
-
-map <C-a> :A <CR>
 
 " generate tags file with C-F12
 map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
@@ -108,31 +117,20 @@ map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 let g:debuggerMaxDepth = 5
 
-" 允许backspace和光标键跨越行边界
-:set whichwrap+=<,>,h,l
-
 " 记住上次离开的的位置
 " 注意：保证.viminfo目录可写
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
-    "hignlight current line
-    :set cursorline
-    ":set cursorcolumn
+"自动载入 .vimrc，修改后不需要重启
+autocmd! bufwritepost .vimrc source %
 
-    :set clipboard=unnamed
-
-    :set go+=a
-
-    "自动载入 .vimrc，修改后不需要重启
-    autocmd! bufwritepost .vimrc source %
-
-    function! ClosePair(char)
-        if getline('.')[col('.') - 1] == a:char
-            return "\<Right>"
-        else
-            return a:char
-        endif
-    endf
+function! ClosePair(char)
+    if getline('.')[col('.') - 1] == a:char
+        return "\<Right>"
+    else
+        return a:char
+    endif
+endf
 
 function! RemovePairs()
 	let l:line = getline(".")
@@ -163,53 +161,20 @@ function! RemovePairs()
 	end
 endfunction
 
-    ":set mouse=v
-    "
-    " no swap file please
-    :set noswapfile
-
-    :set cscopequickfix=s-,c-,d-,i-,t-,e-
-
-    :set iskeyword+=-
-
-    " transfer/read and write one block of text between vim sessions
-    " Usage:
-    " `from' session:
-    " ma
-    " move to end-of-block
-    " xw
-    "
-    " `to' session:
-    " move to where I want block inserted
-    " xr
-    "
-    if has("unix")
-        nmap xr :r $HOME/.vimxfer<CR>
-        nmap xw :'a,.w! $HOME/.vimxfer<CR>
-        vmap xr c<esc>:r $HOME/.vimxfer<CR>
-        vmap xw :w! $HOME/.vimxfer<CR>
-    else
-        nmap xr :r c:/.vimxfer<CR>
-        nmap xw :'a,.w! c:/.vimxfer<CR>
-        vmap xr c<esc>:r c:/.vimxfer<cr>
-        vmap xw :w! c:/.vimxfer<CR>
-    endif
-
-    function! Do_CsTag()
-        if(executable('cscope') && has("cscope") )
-            if(g:iswindows!=1)
-                silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' -o -name '*.cxx' -o -name '*.hxx'> cscope.files"
-            else
-                silent! execute "!dir /b *.c,*.cpp,*.h,*.java,*.cs >> cscope.files"
-            endif
-            silent! execute "!cscope -bq"
-            if filereadable("cscope.out")
-                execute "cs add cscope.out"
-            endif
+function! Do_CsTag()
+    if(executable('cscope') && has("cscope") )
+        if(g:iswindows!=1)
+            silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' -o -name '*.cxx' -o -name '*.hxx'> cscope.files"
+        else
+            silent! execute "!dir /b *.c,*.cpp,*.h,*.java,*.cs >> cscope.files"
         endif
-    endf
-
-    map <F<F6>> :call Do_CsTag()
+        silent! execute "!cscope -bq"
+        if filereadable("cscope.out")
+            execute "cs add cscope.out"
+        endif
+    endif
+endf
+map <F<F6>> :call Do_CsTag()
 
 " markdown syntax settings
 augroup mkd
@@ -218,54 +183,38 @@ augroup mkd
 augroup END
 " set column cursor on when editing markdown files
 au FileType mkd set cursorcolumn
-
-" Removes trailing spaces
-" @http://vim.wikia.com/wiki/Remove_unwanted_spaces#Automatically_removing_all_trailing_whitespace
-function! TrimWhiteSpace()
-  %s/\s*$//
-  ''
-:endfunction
-
-" set list listchars=trail:.,extends:>
-" TODO: When I am writting markdown, I do need trailing spaces to break lines...
-"autocmd FileWritePre * :call TrimWhiteSpace()
-"autocmd FileAppendPre * :call TrimWhiteSpace()
-"autocmd FilterWritePre * :call TrimWhiteSpace()
-"autocmd BufWritePre * :call TrimWhiteSpace()
-
 " generating and markdown image tag
 command! -nargs=1 -complete=file Mkdimg :r!echo "[[/<args>](/<args>)](/<args>)"
 
 " http://naseer.in/use-cscope-to-browse-the-android-source-code
 set nocsverb  
- if filereadable("cscope.out")   
- else   
-     if $ANDROID_BUILD_TOP !=""  
-         "This assumes you have sourced the Android build environment  
-         cscope add $ANDROID_BUILD_TOP/cscope.out      
-  else  
-         "Or, you can point to your android source directory in $ANDROID_DIR   
-         cscope add $ANDROID_DIR/cscope.out  
-     endif   
- endif  
+if filereadable("cscope.out")   
+else   
+    if $ANDROID_BUILD_TOP !=""  
+        "This assumes you have sourced the Android build environment  
+        cscope add $ANDROID_BUILD_TOP/cscope.out      
+ else  
+        "Or, you can point to your android source directory in $ANDROID_DIR   
+        cscope add $ANDROID_DIR/cscope.out  
+    endif   
+endif  
 
 " shortcut for quickfix window
 nmap <leader>cn :cn<cr>
 nmap <leader>cp :cp<cr>
 nmap <leader>cw :cw 10<cr> 
 
-
 """"""""""""""""""""""""""""""
 " lookupfile setting
 " http://easwy.com/blog/archives/advanced-vim-skills-lookupfile-plugin/
 """"""""""""""""""""""""""""""
-let g:LookupFile_MinPatLength = 2               "最少输入2个字符才开始查找
-let g:LookupFile_PreserveLastPattern = 0        "不保存上次查找的字符串
-let g:LookupFile_PreservePatternHistory = 1     "保存查找历史
-let g:LookupFile_AlwaysAcceptFirst = 1          "回车打开第一个匹配项目
-let g:LookupFile_AllowNewFiles = 0              "不允许创建不存在的文件
-if filereadable("./filenametags")               "设置tag文件的名字
-let g:LookupFile_TagExpr = '"./filenametags"'
+let g:LookupFile_MinPatLength = 2                                                     "最少输入2个字符才开始查找
+let g:LookupFile_PreserveLastPattern = 0                                              "不保存上次查找的字符串
+let g:LookupFile_PreservePatternHistory = 1                                           "保存查找历史
+let g:LookupFile_AlwaysAcceptFirst = 1                                                "回车打开第一个匹配项目
+let g:LookupFile_AllowNewFiles = 0                                                    "不允许创建不存在的文件
+if filereadable("/home/calvin/android/source/ics_maindev/filenametags")               "设置tag文件的名字
+let g:LookupFile_TagExpr = '"/home/calvin/android/source/ics_maindev/filenametags"'
 endif
 "映射LookupFile为lf
 "nmap <silent> lf :LUTags<cr>
@@ -293,3 +242,7 @@ function! LookupFile_IgnoreCaseFunc(pattern)
     return files
 endfunction
 let g:LookupFile_LookupFunc = 'LookupFile_IgnoreCaseFunc' 
+
+"completion menu colors
+hi Pmenu ctermfg=0 ctermbg=6 guibg=#444444
+hi PmenuSel ctermfg=7 ctermbg=4 guibg=#555555 guifg=#ffffff
