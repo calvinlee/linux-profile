@@ -1,3 +1,5 @@
+set defsearch=google
+
 set hintchars=hjklasdf
 set tabnumbers
 noremap h gT

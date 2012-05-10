@@ -61,7 +61,7 @@ let g:pydiction_menu_height = 20
 
 "let g:winManagerWindowLayout='FileExplorer|TagList'
 let g:winManagerWindowLayout='NERDTree|TagList'
-nmap wm :WMToggle<cr>
+nmap <leader>wm :WMToggle<cr>
 let g:winManagerWidth = 40
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
@@ -97,15 +97,14 @@ inoremap ' ''<ESC>i
 " format all of text
 nnoremap <leader>f gg=G<C-o><C-o>
 
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+"map <C-j> <C-W>j
+"map <C-k> <C-W>k
+"map <C-h> <C-W>h
+"map <C-l> <C-W>l
 map f/ <esc>:grep
 
 " open bufexplorer
 map <leader>b :BufExplorer<cr>
-let g:bufExplorerFindActive=1 
 " switch between source and header files
 map <C-a> :A <CR>
 
@@ -161,6 +160,9 @@ function! RemovePairs()
 	end
 endfunction
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" cscope setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! Do_CsTag()
     if(executable('cscope') && has("cscope") )
         if(g:iswindows!=1)
@@ -175,16 +177,14 @@ function! Do_CsTag()
     endif
 endf
 map <F<F6>> :call Do_CsTag()
-
-" markdown syntax settings
-augroup mkd
-    autocmd BufNewFile,BufRead *.md set ai formatoptions=tcroqn2 comments=n:>
-    autocmd BufNewFile,BufRead *.md set wrap nonumber
-augroup END
-" set column cursor on when editing markdown files
-au FileType mkd set cursorcolumn
-" generating and markdown image tag
-command! -nargs=1 -complete=file Mkdimg :r!echo "[[/<args>](/<args>)](/<args>)"
+nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 " http://naseer.in/use-cscope-to-browse-the-android-source-code
 set nocsverb  
@@ -198,6 +198,18 @@ else
         cscope add $ANDROID_DIR/cscope.out  
     endif   
 endif  
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" markdown syntax settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup mkd
+    autocmd BufNewFile,BufRead *.md set ai formatoptions=tcroqn2 comments=n:>
+    autocmd BufNewFile,BufRead *.md set wrap nonumber
+augroup END
+" set column cursor on when editing markdown files
+au FileType mkd set cursorcolumn
+" generating and markdown image tag
+command! -nargs=1 -complete=file Mkdimg :r!echo "[[/<args>](/<args>)](/<args>)"
 
 " shortcut for quickfix window
 nmap <leader>cn :cn<cr>
@@ -216,8 +228,8 @@ let g:LookupFile_AllowNewFiles = 0                                              
 if filereadable("/home/calvin/android/source/ics_maindev/filenametags")               "设置tag文件的名字
 let g:LookupFile_TagExpr = '"/home/calvin/android/source/ics_maindev/filenametags"'
 endif
-"映射LookupFile为lf
-"nmap <silent> lf :LUTags<cr>
+"映射LookupFile为,lf
+"nmap <silent> <leader>lf :LUTags<cr>
 "映射LUBufs为,ll
 nmap <silent> <leader>ll :LUBufs<cr>
 "映射LUWalk为,lw
