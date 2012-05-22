@@ -1,0 +1,19 @@
+[user]
+	name = Calvin Lee
+	email = lihao921@gmail.com
+[color]
+	ui = auto
+    diff = auto
+[core]
+	editor = vim
+
+[diff]
+	tool = meld
+[alias]
+	co = checkout
+	br = branch
+	st = status
+	cm = commit
+	checkout = co
+[commit]
+	template = 
