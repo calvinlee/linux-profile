@@ -3,9 +3,9 @@ let mapleader=","
 if has("gui_running")
 "colorscheme asu1dark
 "colorscheme molokai
-colorscheme default
+colorscheme torte
 else
-colorscheme desert
+colorscheme molokai
 "colorscheme elflord
 "colorscheme tango
 endif 
@@ -17,7 +17,8 @@ set hidden               " Hide buffers when they are abandoned
 set mouse=a              " Enable mouse usage (all modes)
 
 set nu
-set clipboard+=unnamed " share window clipboard
+"set clipboard+=unnamed " share window clipboard, 
+set clipboard=unnamedplus
 
 set nocompatible         " explicitly get out of vi-compatible mode
 set noexrc               " don't use local version of .(g)vimrc, .exrc
@@ -97,10 +98,12 @@ inoremap ' ''<ESC>i
 " format all of text
 nnoremap <leader>f gg=G<C-o><C-o>
 
-"map <C-j> <C-W>j
-"map <C-k> <C-W>k
-"map <C-h> <C-W>h
-"map <C-l> <C-W>l
+" to map ALT, press Ctrl-v and Ctrl-[
+inoremap h <LEFT>
+inoremap j <DOWN>
+inoremap k <UP>
+inoremap l <RIGHT>
+
 map f/ <esc>:grep
 
 " open bufexplorer
@@ -258,3 +261,29 @@ let g:LookupFile_LookupFunc = 'LookupFile_IgnoreCaseFunc'
 "completion menu colors
 hi Pmenu ctermfg=0 ctermbg=6 guibg=#444444
 hi PmenuSel ctermfg=7 ctermbg=4 guibg=#555555 guifg=#ffffff
+
+" 在insert mode和normal mode中自动切换输入法状态
+
+" 这个可以工作，可以速度有些慢...
+"set iminsert=0
+"set imsearch=0 
+"let w:input_toggle = 0
+"function! Fcitx2en()
+"       let s:input_status = system("fcitx-remote")
+"       if s:input_status != 0
+"               let w:input_toggle = 1
+"               let l:a = system("fcitx-remote -c")
+"       endif
+"endfunction
+"
+"function! Fcitx2zh()
+"       let s:input_status = system("fcitx-remote")
+"       if w:input_toggle != 0
+"               let l:a = system("fcitx-remote -o")
+"               let w:input_toggle = 0
+"       endif
+"endfunction
+"
+"autocmd! InsertLeave * call Fcitx2en()
+"autocmd! InsertEnter * call Fcitx2zh()
+"set timeoutlen=150
