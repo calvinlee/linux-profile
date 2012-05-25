@@ -70,7 +70,7 @@ let Tlist_Exit_OnlyWindow=1
 " Key mappings {
 "
 "http://markmail.org/message/xquyuriysxd45m6n#query:vim%20alt%20konsole+page:1+mid:xquyuriysxd45m6n+state:results
-map q :q <CR>
+" map q :q <CR>
 map Q :qa <CR>
 map W :w <CR>
 map <S-CR> o<Esc>
@@ -261,29 +261,3 @@ let g:LookupFile_LookupFunc = 'LookupFile_IgnoreCaseFunc'
 "completion menu colors
 hi Pmenu ctermfg=0 ctermbg=6 guibg=#444444
 hi PmenuSel ctermfg=7 ctermbg=4 guibg=#555555 guifg=#ffffff
-
-" 在insert mode和normal mode中自动切换输入法状态
-
-" 这个可以工作，可以速度有些慢...
-"set iminsert=0
-"set imsearch=0 
-"let w:input_toggle = 0
-"function! Fcitx2en()
-"       let s:input_status = system("fcitx-remote")
-"       if s:input_status != 0
-"               let w:input_toggle = 1
-"               let l:a = system("fcitx-remote -c")
-"       endif
-"endfunction
-"
-"function! Fcitx2zh()
-"       let s:input_status = system("fcitx-remote")
-"       if w:input_toggle != 0
-"               let l:a = system("fcitx-remote -o")
-"               let w:input_toggle = 0
-"       endif
-"endfunction
-"
-"autocmd! InsertLeave * call Fcitx2en()
-"autocmd! InsertEnter * call Fcitx2zh()
-"set timeoutlen=150
