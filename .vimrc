@@ -1,28 +1,29 @@
 let mapleader=","
 
-if has("gui_running")
+"if has("gui_running")
 "colorscheme asu1dark
 "colorscheme molokai
-colorscheme torte
-else
-colorscheme molokai
+"colorscheme torte
+""colorscheme default
+""else
+""colorscheme molokai
+"colorscheme torte
 "colorscheme elflord
 "colorscheme tango
-endif 
+""endif 
 
 set showcmd              " Show (partial) command in status line.
-set showmatch            " Show matching brackets.
-set autowrite            " Automatically save before commands like :next and :make
+set showmatch            " Show matching brackets.  set autowrite            " Automatically save before commands like :next and :make
 set hidden               " Hide buffers when they are abandoned
 set mouse=a              " Enable mouse usage (all modes)
 
 set nu
-"set clipboard+=unnamed " share window clipboard, 
-set clipboard=unnamedplus
+" set clipboard+=unnamed " share window clipboard, 
+" set clipboard=unnamedplus
 
 set nocompatible         " explicitly get out of vi-compatible mode
 set noexrc               " don't use local version of .(g)vimrc, .exrc
-set background=dark      " we plan to use a dark background
+"set background=dark      " we plan to use a dark background
 syntax on                " syntax highlighting on
 
 " Search {
@@ -50,6 +51,10 @@ set cscopequickfix=s-,c-,d-,i-,t-,e- "set cscope
 set noswapfile
 set iskeyword+=-
 
+" 一次滚动5行，解决终端下滚动过慢的问题
+set scrolljump=5
+set t_Co=256
+
 filetype plugin indent on
 
 "pydiction 1.2 python auto complete
@@ -73,10 +78,6 @@ let Tlist_Exit_OnlyWindow=1
 " map q :q <CR>
 map Q :qa <CR>
 map W :w <CR>
-map <S-CR> o<Esc>
-map <C-S-CR> O<Esc>
-inoremap <S-CR> <ESC>$o
-inoremap <C-S-CR> <ESC>$O
 
 inoremap <C-a> <ESC>:r!date<CR>iCalvin.Lee<lihao921@gmail.com> @ <ESC>kJA<CR>
 
@@ -99,10 +100,11 @@ inoremap ' ''<ESC>i
 nnoremap <leader>f gg=G<C-o><C-o>
 
 " to map ALT, press Ctrl-v and Ctrl-[
-inoremap h <LEFT>
-inoremap j <DOWN>
-inoremap k <UP>
-inoremap l <RIGHT>
+" these cause problems....
+"inoremap h <LEFT>
+"inoremap j <DOWN>
+"inoremap k <UP>
+"inoremap l <RIGHT>
 
 map f/ <esc>:grep
 
