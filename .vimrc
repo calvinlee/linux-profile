@@ -67,7 +67,7 @@ let g:pydiction_menu_height = 20
 
 "let g:winManagerWindowLayout='FileExplorer|TagList'
 let g:winManagerWindowLayout='NERDTree|TagList'
-nmap <leader>wm :WMToggle<cr>
+nmap <silent> <leader>wm :WMToggle<cr>
 let g:winManagerWidth = 40
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
@@ -108,8 +108,6 @@ nnoremap <leader>f gg=G<C-o><C-o>
 
 map f/ <esc>:grep
 
-" open bufexplorer
-map <leader>b :BufExplorer<cr>
 " switch between source and header files
 map <C-a> :A <CR>
 

@@ -15,5 +15,5 @@
 	st = status
 	cm = commit
 	checkout = co
-[commit]
-	template = 
+#[commit]
+#	template = 

@@ -12,9 +12,14 @@ alias gvim='gvim -c "call Maximize_Window()"'
 alias na='nautilus'
 alias vi='vim'
 alias logcat='adb logcat -v time '
-alias rm='printf "rm is disabled, use trash or rmi instead.\n"'
-alias rmi='/bin/rm -I'
 alias sudo='sudo -E'
+
+alias rm=trash
+alias lsrm='ls -al ~/.local/share/Trash/files'
+trash()
+{
+    mv $@ ~/.local/share/Trash/files
+}
 
 
 #release=`cat /etc/lsb-release |grep DISTRIB_ID|cut -c12-`;
