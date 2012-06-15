@@ -6,7 +6,7 @@ let mapleader=","
 "colorscheme torte
 ""colorscheme default
 ""else
-""colorscheme molokai
+colorscheme molokai
 "colorscheme torte
 "colorscheme elflord
 "colorscheme tango
@@ -55,6 +55,9 @@ set iskeyword+=-
 set scrolljump=5
 set t_Co=256
 
+" http://blah.blogsome.com/2007/08/23/vim_cn_faq/
+set fileencodings=ucs-bom,utf-8,chinese,big5,latin1
+
 filetype plugin indent on
 
 "pydiction 1.2 python auto complete
@@ -98,6 +101,9 @@ inoremap ' ''<ESC>i
 ""
 " format all of text
 nnoremap <leader>f gg=G<C-o><C-o>
+
+" 防止按下ESC后光标向左移一位
+inoremap <ESC> <ESC>`^
 
 " to map ALT, press Ctrl-v and Ctrl-[
 " these cause problems....

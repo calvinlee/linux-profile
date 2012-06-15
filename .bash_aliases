@@ -33,7 +33,7 @@ trash()
 
 if [ -f /etc/arch-release ] ; then
     alias pacupg='sudo pacman-color -Syu'                # 同步软件仓库信息然后升级系统
-    alias pacin='sudo pacman-color -S'                   # 从软件仓库安装软件包
+    alias pacin='sudo pacman-color -Sy'                   # 从软件仓库安装软件包
     alias pacinl='sudo pacman-color -U'                  # 从本地文件安装软件包
     alias pacrm='sudo pacman-color -R'                   # 删除软件包，保留配置和依赖
     alias pacrmp='sudo pacman-color -Rns'                # 彻底删除软件包，清除配置，删除无用依赖

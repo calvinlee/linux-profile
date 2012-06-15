@@ -6,6 +6,8 @@ set tabnumbers
 " 打开页面后自动进入normal模式，而不要把焦点放在输入框上
 set focuscontent 
 
+set titlestring=Firefox
+
 noremap h gT
 noremap l gt
 noremap j 5j
@@ -18,7 +20,6 @@ noremap H h
 noremap L l
 noremap , <C-o>
 noremap . <C-i>
-noremap g gg
 noremap <C-,> <C-6>
 
 set nextpattern=\s*下一页|下一张|下页\s*,\bnext\b,^>$,^(>>|››|»)$,^(>|»),(>|»)$,\bmore\b
@@ -30,14 +31,12 @@ autocmd LocationChange .* js modes.passAllKeys = /.*(mail\.google\.com|www\.goog
 noremap gm :tabopen https://mail.google.com<CR>
 noremap gr :tabopen https://www.google.com/reader<CR>
 noremap gd :tabopen http://dict.cn/<CR>
-noremap gb :tabopen http://www.blogjava.net/lihao336/<CR>
 noremap ge :tabopen https://www.evernote.com/Home.action<CR>
 noremap ga :tabopen http://developer.android.com<CR>
 
 noremap gM :open https://mail.google.com<CR>
 noremap gR :open https://www.google.com/reader<CR>
 noremap gD :open http://dict.cn/<CR>
-noremap gB :open http://www.blogjava.net/lihao336/<CR>
 noremap gE :open https://www.evernote.com/Home.action<CR>
 noremap gA :open http://developer.android.com<CR>
 
