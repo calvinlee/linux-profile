@@ -3,7 +3,8 @@ let mapleader=","
 "if has("gui_running")
 "colorscheme asu1dark
 "colorscheme molokai
-"colorscheme torte
+"colorscheme darkblue2
+colorscheme koehler
 ""colorscheme default
 ""else
 ""colorscheme molokai
