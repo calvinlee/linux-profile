@@ -215,6 +215,7 @@ endif
 augroup mkd
     autocmd BufNewFile,BufRead *.md set ai formatoptions=tcroqn2 comments=n:>
     autocmd BufNewFile,BufRead *.md set wrap nonumber
+    autocmd BufWritePre,FileWritePre *.md %s/\(\\\)\@<!_/\\_/g
 augroup END
 " set column cursor on when editing markdown files
 au FileType mkd set cursorcolumn
