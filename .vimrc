@@ -2,12 +2,12 @@ let mapleader=","
 
 "if has("gui_running")
 "colorscheme asu1dark
-"colorscheme molokai
-"colorscheme darkblue2
-colorscheme koehler
-""colorscheme default
-""else
 colorscheme molokai
+"colorscheme darkblue2
+"colorscheme koehler
+"colorscheme default
+"else
+"colorscheme molokai
 "colorscheme torte
 "colorscheme elflord
 "colorscheme tango
@@ -87,16 +87,16 @@ inoremap <C-a> <ESC>:r!date<CR>iCalvin.Lee<lihao921@gmail.com> @ <ESC>kJA<CR>
 
 "自动补全成对的括号和引号
 "@http://blog.hotoo.me/vim-autocomplete-pairs.html
-inoremap ( ()<ESC>i
-inoremap ) <c-r>=ClosePair(')')<CR>
-inoremap { {}<ESC>i
-inoremap } <c-r>=ClosePair('}')<CR>
-inoremap [ []<ESC>i
-inoremap ] <c-r>=ClosePair(']')<CR>
-inoremap < <><ESC>i
-inoremap > <c-r>=ClosePair('>')<CR>
-inoremap " ""<ESC>i
-inoremap ' ''<ESC>i
+" inoremap ( ()<ESC>i
+" inoremap ) <c-r>=ClosePair(')')<CR>
+" inoremap { {}<ESC>i
+" inoremap } <c-r>=ClosePair('}')<CR>
+" inoremap [ []<ESC>i
+" inoremap ] <c-r>=ClosePair(']')<CR>
+" inoremap < <><ESC>i
+" inoremap > <c-r>=ClosePair('>')<CR>
+" inoremap " ""<ESC>i
+" inoremap ' ''<ESC>i
 "@http://oldj.net/article/vim-parenthesis/
 "inoremap <BS> <ESC>:call RemovePairs()<CR>a
 ""

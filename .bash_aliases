@@ -21,6 +21,15 @@ trash()
     mv $@ ~/.local/share/Trash/files
 }
 
+alias touch=touchmore
+touchmore()
+{
+    mkdir -p `dirname $@`
+    /usr/bin/touch $@
+}
+
+alias aget='sudo apt-get'
+
 
 #release=`cat /etc/lsb-release |grep DISTRIB_ID|cut -c12-`;
 #case "$release" in 
