@@ -22,12 +22,14 @@ if [ -d "$HOME/bin" ] ; then
 fi
 export LANG="en_US.UTF-8"
 
-disable_touchpad
+#disable_touchpad
 
-export XIM=fcitx
-export XMODIFIERS="@im=fcitx"
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XIM_PROGRAM=fcitx
-killall fcitx
-fcitx &
+#export XIM=fcitx
+#export XMODIFIERS="@im=fcitx"
+#export GTK_IM_MODULE=fcitx
+#export QT_IM_MODULE=fcitx
+#export XIM_PROGRAM=fcitx
+#killall fcitx
+#fcitx > /dev/null 2>&1 &
+
+~/.dropbox-dist/dropboxd > /dev/null 2>&1 &

@@ -14,7 +14,7 @@ alias vi='vim'
 alias logcat='adb logcat -v time '
 alias sudo='sudo -E'
 
-alias rm=trash
+#alias rm=trash
 alias lsrm='ls -al ~/.local/share/Trash/files'
 trash()
 {

@@ -17,3 +17,7 @@
 	checkout = co
 #[commit]
 #	template = 
+[merge]
+	tool = meld
+[commit]
+	template = ~/.gitmessage

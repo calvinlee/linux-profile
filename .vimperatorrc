@@ -26,7 +26,7 @@ set nextpattern=\s*下一页|下一张|下页\s*,\bnext\b,^>$,^(>>|››|»)$,^
 set previouspattern=\s*上一页|上一张|上页\s*,\bprev|previous\b,^<$,^(<<|‹‹|«)$,^(<|«),(<|«)$
 
 " PassThrough gmail and google reader
-autocmd LocationChange .* js modes.passAllKeys = /.*(mail\.google\.com|www\.google\.com\/reader|www\.rememberthemilk\.com\/home|http:\/\/news.163.com\/photoview|www\.evernote\.com\/Home\.action).*/.test(buffer.URL)
+autocmd LocationChange .* js modes.passAllKeys = /.*(mail\.google\.com|www\.google\.com\/reader|www\.rememberthemilk\.com\/home|http:\/\/news.163.com\/photoview|www\.evernote\.com\/Home\.action|1\.202\.242\.144).*/.test(buffer.URL)
 
 noremap gm :tabopen https://mail.google.com<CR>
 noremap gr :tabopen https://www.google.com/reader<CR>
