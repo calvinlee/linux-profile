@@ -1,3 +1,7 @@
+# Android adb commands
+alias log='adb logcat -v time '
+alias logam='adb logcat -v time -s ActivityManager:v'
+#alias adb ='adb root&&adb remount'
 
 alias em='emacs -nw'
 alias vi='vim'
@@ -11,7 +15,6 @@ alias c='cd'
 alias gvim='gvim -c "call Maximize_Window()"'
 alias na='nautilus'
 alias vi='vim'
-alias logcat='adb logcat -v time '
 alias sudo='sudo -E'
 
 #alias rm=trash

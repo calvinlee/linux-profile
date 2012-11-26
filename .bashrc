@@ -111,3 +111,5 @@ alias na='nautilus'
 
 alias f='fg'
 alias vi='vim'
+
+export EDITOR=/usr/bin/vim
