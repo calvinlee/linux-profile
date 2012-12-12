@@ -96,8 +96,9 @@ inoremap [ []<ESC>i
 inoremap ] <c-r>=ClosePair(']')<CR>
 inoremap < <><ESC>i
 inoremap > <c-r>=ClosePair('>')<CR>
-inoremap " ""<ESC>i
-inoremap ' ''<ESC>i
+" This completion is a little annoying, so remove it
+"inoremap " ""<ESC>i
+"inoremap ' ''<ESC>i
 "@http://oldj.net/article/vim-parenthesis/
 "inoremap <BS> <ESC>:call RemovePairs()<CR>a
 ""
@@ -220,7 +221,7 @@ augroup mkd
     autocmd BufWritePre,FileWritePre *.md :silent! %s/\(^[^\x20{4,}].*\)\@<=\(\\\)\@<!_/\\_/g
 augroup END
 " set column cursor on when editing markdown files
-au FileType mkd set cursorcolumn
+au FileType mkd,python set cursorcolumn
 " generating and markdown image tag
 command! -nargs=1 -complete=file Mkdimg :r!echo "[[/<args>](/<args>)](/<args>)"
 

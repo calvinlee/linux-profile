@@ -106,6 +106,8 @@ export PATH=~/android/android-sdk-linux_86/platform-tools:$PATH
 export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH:/home/calvin/development/javancss-30.51/javancss-30.51/lib/ccl.jar:/home/calvin/development/javancss-30.51/javancss-30.51/lib/javancss.jar:/home/calvin/development/javancss-30.51/javancss-30.51/lib/jhbasic.jar
 export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
 
+export PATH=$PATH:~/github/calvinlee/linux-config/bin
+
 alias ge='gedit'
 alias na='nautilus'
 

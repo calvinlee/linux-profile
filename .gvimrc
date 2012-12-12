@@ -1,8 +1,10 @@
 "colorscheme winter 
-colorscheme default
+"colorscheme default
+colorscheme molokai
 set guioptions-=m
 set guioptions-=T
 
+set guifont=Yahei\ Consolas\ Hybrid\ 12
 map <M-q> :q <CR>
 "Toggle Menu and Toolbar with F2
 map <silent> <F2> :if &guioptions =~# 'T' <Bar>

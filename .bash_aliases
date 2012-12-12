@@ -1,7 +1,7 @@
 # Android adb commands
-alias log='adb logcat -v time '
-alias logam='adb logcat -v time -s ActivityManager:v'
-#alias adb ='adb root&&adb remount'
+alias adbw='adb_wrapper.sh'
+alias logcat='adbw logcat'
+alias logam='adbw logcat -s ActivityManager:v'
 
 alias em='emacs -nw'
 alias vi='vim'
