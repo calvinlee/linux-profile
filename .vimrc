@@ -67,7 +67,6 @@ set nocp
 filetype plugin on
 
 let g:pydiction_location = '~/.vim/tools/pydiction/complete-dict'
-let g:pydiction_menu_height = 15
 let g:pydiction_menu_height = 20
 
 "let g:winManagerWindowLayout='FileExplorer|TagList'
