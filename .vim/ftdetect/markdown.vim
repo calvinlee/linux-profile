@@ -1,1 +1,2 @@
-au BufNewFile,BufRead *.md set filetype=mkd
+" Markdown
+autocmd BufNewFile,BufRead *.{md,mkd,mkdn,mark*} set filetype=markdown
