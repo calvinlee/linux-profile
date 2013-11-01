@@ -3,7 +3,7 @@
 # Simple adb command wrapper script.
 
 SUB_CMD=$1
-ADB_BIN=~/android/android-sdk-linux_86/platform-tools/adb
+ADB_BIN=`which adb`
 
 # drop the first sub command, like logcat, push, etc
 #shift 1

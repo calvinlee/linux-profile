@@ -4,7 +4,7 @@ set hintchars=hjklasdf
 set tabnumbers
 
 " 打开页面后自动进入normal模式，而不要把焦点放在输入框上
-set focuscontent 
+" set focuscontent 
 
 set titlestring=Firefox
 
@@ -29,13 +29,13 @@ set previouspattern=\s*上一页|上一张|上页\s*,\bprev|previous\b,^<$,^(<<|
 autocmd LocationChange .* js modes.passAllKeys = /.*(mail\.google\.com|www\.google\.com\/reader|www\.rememberthemilk\.com\/home|http:\/\/news.163.com\/photoview|www\.evernote\.com\/Home\.action|1\.202\.242\.144).*/.test(buffer.URL)
 
 noremap gm :tabopen https://mail.google.com<CR>
-noremap gr :tabopen https://www.google.com/reader<CR>
+noremap gr :tabopen http://cloud.feedly.com/#latest<CR>
 noremap gd :tabopen http://dict.cn/<CR>
 noremap ge :tabopen https://www.evernote.com/Home.action<CR>
 noremap ga :tabopen http://developer.android.com<CR>
 
 noremap gM :open https://mail.google.com<CR>
-noremap gR :open https://www.google.com/reader<CR>
+noremap gR :open http://cloud.feedly.com/#latest<CR>
 noremap gD :open http://dict.cn/<CR>
 noremap gE :open https://www.evernote.com/Home.action<CR>
 noremap gA :open http://developer.android.com<CR>

@@ -99,19 +99,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 export PS1="\[\e[32;1m\][\[\e[36;1m\]\u@\H \[\e[31;1m\]\w \t \[\e[32;1m\]] \n\$ \[\e[0m\]"
-
-export PATH=~/android/android-sdk-linux_86/tools:$PATH
-export PATH=~/android/android-sdk-linux_86/platform-tools:$PATH
-
-export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH:/home/calvin/development/javancss-30.51/javancss-30.51/lib/ccl.jar:/home/calvin/development/javancss-30.51/javancss-30.51/lib/javancss.jar:/home/calvin/development/javancss-30.51/javancss-30.51/lib/jhbasic.jar
-export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
-
-export PATH=$PATH:~/github/calvinlee/linux-config/bin
-
-alias ge='gedit'
-alias na='nautilus'
-
-alias f='fg'
-alias vi='vim'
-
 export EDITOR=/usr/bin/vim
+export PATH=$PATH:~/github/calvinlee/linux-profile/bin
+
+# For Android develpment
+export ANDROID_SDK_HOME=~/android/adt-bundle-linux-x86_64-20130917/sdk/
+export PATH=$ANDROID_SDK_HOME/tools:$ANDROID_SDK_HOME/platform-tools:$PATH
+export USE_CCACHE=1
+

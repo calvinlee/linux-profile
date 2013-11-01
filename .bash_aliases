@@ -32,7 +32,9 @@ touchmore()
 }
 
 alias aget='sudo apt-get'
-
+alias gitp='git push origin HEAD:refs/for/master'
+alias gsync='gclient sync -j1'
+alias rh='gclient runhooks'
 
 #release=`cat /etc/lsb-release |grep DISTRIB_ID|cut -c12-`;
 #case "$release" in 
@@ -57,3 +59,5 @@ if [ -f /etc/arch-release ] ; then
     alias pacinsd='sudo pacman-color -S --asdeps'        # 将某软件包作为其它软件包的依赖安装
     alias pacmir='sudo pacman-color -Syy'                # 强制刷新软件仓库信息
 fi
+
+alias grep='grep --color '

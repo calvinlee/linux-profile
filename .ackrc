@@ -1,0 +1,9 @@
+# Always sort the files
+--sort-files
+
+# Always color, even if piping to a another program
+--color
+--color-match=bold red
+
+# see http://beyondgrep.com/ack-1.x/ack-1.96-man.html#why_isn_t_ack_finding_a_match_in__some_file_
+#-a
