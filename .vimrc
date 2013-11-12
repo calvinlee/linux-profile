@@ -211,7 +211,7 @@ else
 endif  
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" markdown syntax settings
+" markdown settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup markdown
     autocmd BufNewFile,BufRead *.{md,markdown} set ai formatoptions=tcroqn2 comments=n:>
@@ -222,6 +222,7 @@ augroup END
 " au FileType markdown,python set cursorcolumn
 " generating and markdown image tag
 command! -nargs=1 -complete=file Mkdimg :r!echo "[[/<args>](/<args>)](/<args>)"
+inoremap <C-c> {% codeblock %}<CR>{% endcodeblock %} <ESC>ko
 
 " shortcut for quickfix window
 nmap <leader>cn :cn<cr>
