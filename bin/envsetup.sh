@@ -28,3 +28,8 @@ ln -s $P_ROOT/.gvimrc $HOME/.gvimrc
 mv $HOME/.gitconfig $HOME/.gitconfig.bak
 ln -s $P_ROOT/.gitconfig $HOME/.gitconfig
 
+echo "Setting up zsh"
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+mv ~/.zshrc ~/.zshrc.bak
+ln -s $P_ROOT/.zshrc $HOME/.zshrc
+chsh -s /bin/zsh
