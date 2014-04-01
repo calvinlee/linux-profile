@@ -26,18 +26,18 @@ set nextpattern=\s*下一页|下一张|下页\s*,\bnext\b,^>$,^(>>|››|»)$,^
 set previouspattern=\s*上一页|上一张|上页\s*,\bprev|previous\b,^<$,^(<<|‹‹|«)$,^(<|«),(<|«)$
 
 " PassThrough gmail and google reader
-autocmd LocationChange .* js modes.passAllKeys = /.*(www\.google\.com\/reader|www\.rememberthemilk\.com\/home|http:\/\/news.163.com\/photoview|1\.202\.242\.144).*/.test(buffer.URL)
+autocmd LocationChange .* js modes.passAllKeys = /.*(www\.google\.com\/reader|www\.rememberthemilk\.com\/home|http:\/\/news.163.com\/photoview|app\.yinxiang\.com\/Home\.action).*/.test(buffer.URL)
 
 noremap gm :tabopen https://mail.google.com<CR>
 noremap gr :tabopen http://cloud.feedly.com/#latest<CR>
 noremap gd :tabopen http://dict.cn/<CR>
-noremap ge :tabopen https://www.evernote.com/Home.action<CR>
+noremap ge :tabopen https://app.yinxiang.com/Home.action<CR>
 noremap ga :tabopen http://developer.android.com<CR>
 
 noremap gM :open https://mail.google.com<CR>
 noremap gR :open http://cloud.feedly.com/#latest<CR>
 noremap gD :open http://dict.cn/<CR>
-noremap gE :open https://www.evernote.com/Home.action<CR>
+noremap gE :open https://app.yinxiang.com/Home.action<CR>
 noremap gA :open http://developer.android.com<CR>
 
 inoremap <C-m> lihao921@gmail.com

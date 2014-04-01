@@ -215,8 +215,10 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup markdown
     autocmd BufNewFile,BufRead *.{md,markdown} set ai formatoptions=tcroqn2 comments=n:>
-    " 保存时将除了代码块以外的_替换为\_
-    autocmd BufWritePre,FileWritePre *.{md,markdown} :silent! %s/\(^[^\x20{4,}].*\)\@<=\(\\\)\@<!_/\\_/g
+    " 保存时将除了代码块以外的\_替换为\_
+    autocmd BufWritePre,FileWritePre *.{md,markdown} :silent! %s/\(^[^\x20{4,}].*\)\@<=\(\\\)\@<!\_/\\_/g
+    "autocmd BufWritePre,FileWritePre *.{md,markdown} \
+    ":silent! %s/\(^[{% codeblock %}\_.\{-}{% endcodeblock %}].*\)\@<=\(\\\)\@<!\_/\\_/g
 augroup END
 " set column cursor on when editing markdown files
 " au FileType markdown,python set cursorcolumn
@@ -271,3 +273,16 @@ let g:LookupFile_LookupFunc = 'LookupFile_IgnoreCaseFunc'
 "completion menu colors
 hi Pmenu ctermfg=0 ctermbg=6 guibg=#444444
 hi PmenuSel ctermfg=7 ctermbg=4 guibg=#555555 guifg=#ffffff
+
+" Bundle configs
+"filetype off                  " required!
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+Bundle 'Lokaltog/vim-powerline'
+
+set laststatus=2
+let g:Powline_symbols='fancy'
+" let g:Powerline_colorscheme='solarized256'
