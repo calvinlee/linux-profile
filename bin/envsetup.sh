@@ -23,8 +23,11 @@ sqliteman \
 gnome-tweak-tool \
 alacarte \
 python-pip \
-terminator \
-ia32-libs
+terminator
+
+if [ `arch` = 'x86_64' ]; then
+    sudo apt-get install ia32-libs
+fi
 
 # Remove overlay scrollbar
 sudo apt-get remove overlay-scrollbar liboverlay-scrollbar
