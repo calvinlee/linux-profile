@@ -3,11 +3,13 @@
 
 P_ROOT=~/github/calvinlee/linux-profile
 
+sudo add-apt-repository ppa:fcitx-team/stable
 sudo apt-get update
-
+sudo apt-get purge scim
 sudo apt-get remove vim-tiny
 sudo apt-get install vim-gnome
 sudo apt-get install git-core tig git-doc curl meld
+
 sudo apt-get install gthumb \
 ecryptfs-utils \
 exuberant-ctags \
@@ -23,7 +25,11 @@ sqliteman \
 gnome-tweak-tool \
 alacarte \
 python-pip \
-terminator
+terminator \
+firefox \
+fcitx fcitx-config-gtk fcitx-sunpinyin fcitx-tools
+
+im-switch -s fcitx -z default
 
 if [ `arch` = 'x86_64' ]; then
     sudo apt-get install ia32-libs
@@ -61,6 +67,9 @@ ln -s $P_ROOT/.vimrc $HOME/.vimrc
 
 mv $HOME/.gvimrc $HOME/.gvimrc.bak
 ln -s $P_ROOT/.gvimrc $HOME/.gvimrc
+
+# https://github.com/gmarik/Vundle.vim
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 mv $HOME/.gitconfig $HOME/.gitconfig.bak
 ln -s $P_ROOT/.gitconfig $HOME/.gitconfig

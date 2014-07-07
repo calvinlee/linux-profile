@@ -1,0 +1,13 @@
+{"patterns":
+    [
+    {"enabled":true,"name":"google service","pattern":"*://*.google-analytics.com/*","isRegEx":false,"caseSensitive":false,"blackList":false,"multiLine":false},
+    {"enabled":true,"name":"google service","pattern":"*://*.googlesource.com/*","isRegEx":false,"caseSensitive":false,"blackList":false,"multiLine":false},
+    {"enabled":true,"name":"google service","pattern":"*://*.ggpht.com/*","isRegEx":false,"caseSensitive":false,"blackList":false,"multiLine":false},
+    {"enabled":true,"name":"google service","pattern":"*://*.google.com.hk/*","isRegEx":false,"caseSensitive":false,"blackList":false,"multiLine":false},
+    {"enabled":true,"name":"google service","pattern":"*://*.google.com/*","isRegEx":false,"caseSensitive":false,"blackList":false,"multiLine":false},
+    {"enabled":true,"name":"google service","pattern":"*://*.android.com/*","isRegEx":false,"caseSensitive":false,"blackList":false,"multiLine":false},
+    {"enabled":true,"name":"google service","pattern":"*://*.googleapis.com/*","isRegEx":false,"caseSensitive":false,"blackList":false,"multiLine":false},
+    {"enabled":true,"name":"google service","pattern":"*://*.googleusercontent.com/*","isRegEx":false,"caseSensitive":false,"blackList":false,"multiLine":false},
+    {"enabled":true,"name":"google service","pattern":"*://*blogblog.com/*","isRegEx":false,"caseSensitive":false,"blackList":false,"multiLine":false}
+    ]
+}

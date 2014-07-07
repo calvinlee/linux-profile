@@ -1,14 +1,12 @@
 # Android adb commands
 alias adbw='adb_wrapper.sh'
-alias logcat='adbw logcat'
-alias logam='adbw logcat -s ActivityManager:v'
+alias logcat='adb logcat -v time '
+alias logam='adb logcat -v time -s ActivityManager:v'
 
 alias em='emacs -nw'
 alias vi='vim'
 alias ls='ls --color=auto'
-alias l='ls'
-alias ll='ls -al'
-alias ls='ls -l -h'
+alias ll='ls -alh'
 eval $(dircolors -b)
 alias c='cd'
 

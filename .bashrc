@@ -68,9 +68,9 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls -l -t --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+    alias ls='ls -t --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -107,3 +107,7 @@ export ANDROID_SDK_HOME=~/android/adt-bundle-linux-x86_64-20130917/sdk/
 export PATH=$ANDROID_SDK_HOME/tools:$ANDROID_SDK_HOME/platform-tools:$PATH
 export USE_CCACHE=1
 
+# For gitprompt
+source $HOME/.bash-git-prompt/gitprompt.sh
+export GIT_PROMPT_START='\[\e[32;1m\][\[\e[36;1m\]\u@\H \[\e[31;1m\]\w \t \[\e[32;1m\]]'
+export GIT_PROMPT_END='\n\$ \[\e[0m\]'
