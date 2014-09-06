@@ -8,7 +8,7 @@ alias vi='vim'
 alias ls='ls --color=auto'
 alias ll='ls -alh'
 eval $(dircolors -b)
-alias c='cd'
+alias xopen='xdg-open'
 
 alias gvim='gvim -c "call Maximize_Window()"'
 alias na='nautilus'

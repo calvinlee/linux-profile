@@ -103,8 +103,8 @@ export EDITOR=/usr/bin/vim
 export PATH=$PATH:~/github/calvinlee/linux-profile/bin
 
 # For Android develpment
-export ANDROID_SDK_HOME=~/android/adt-bundle-linux-x86_64-20130917/sdk/
-export PATH=$ANDROID_SDK_HOME/tools:$ANDROID_SDK_HOME/platform-tools:$PATH
+export ANDROID_SDK_HOME=~/android/adt-bundle-linux-x86_64-20130917/sdk
+export PATH=$ANDROID_SDK_HOME/tools:$ANDROID_SDK_HOME/platform-tools:$ANDROID_SDK_HOME/build-tools:$PATH
 export USE_CCACHE=1
 
 # For gitprompt

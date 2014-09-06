@@ -79,3 +79,6 @@ git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 mv ~/.zshrc ~/.zshrc.bak
 ln -s $P_ROOT/.zshrc $HOME/.zshrc
 # chsh -s /bin/zsh
+
+echo "====Setting up bash-git-prompt"
+git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt

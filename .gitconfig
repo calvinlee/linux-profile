@@ -6,6 +6,7 @@
     diff = auto
 [core]
 	editor = vim
+	quotepath = false
 
 [diff]
 	tool = meld
